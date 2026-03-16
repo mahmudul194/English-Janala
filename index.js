@@ -3,9 +3,21 @@ const createElements = (arr) =>{
     return(htmlElements.join(' '))
 }
 
+const manageSpinner = (status) =>{
+    if(status === true){
+        document.getElementById('spinner').classList.remove('hidden')
+        document.getElementById('word-container').classList.add('hidden')
+    }
+    else{
+        document.getElementById('word-container').classList.remove('hidden')
+        document.getElementById('spinner').classList.add('hidden')
+    }
+}
 
 const loadlessons = ()=>{
-    fetch("https://openapi.programming-hero.com/api/levels/all").then(res => res.json()).then(json => displayLessons(json.data))
+    fetch("https://openapi.programming-hero.com/api/levels/all")
+    .then(res => res.json())
+    .then(json => displayLessons(json.data))
 }
 
 const removeActive = () =>{
@@ -14,9 +26,13 @@ const removeActive = () =>{
 }
 
 const loadLevelword = (id) =>{
+    manageSpinner(true)
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     
-    fetch(url).then(res => res.json()).then(json => {
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        
         removeActive();
         const clickBtn = document.getElementById(`lesson-btn-${id}`)
         clickBtn.classList.add('active')
@@ -56,6 +72,7 @@ const displayWordDetails = (word) =>{
     document.getElementById('word_modal').showModal();
 }
 
+
 const displayLevelWord = (words)=>{
     const wordContainer = document.getElementById('word-container')
     wordContainer.innerHTML = '';
@@ -68,8 +85,10 @@ const displayLevelWord = (words)=>{
             <h2 class="font-bangla text-4xl" >নেক্সট Lesson এ যান</h2>
         </div>
         `
+        manageSpinner(false)
         return;
     }
+
     words.forEach(word => {
         const card = document.createElement('div')
         card.innerHTML = `
@@ -86,6 +105,7 @@ const displayLevelWord = (words)=>{
         `
         wordContainer.appendChild(card)
     })
+    manageSpinner(false);
 }
 
 
@@ -98,9 +118,11 @@ const displayLessons = (lessons) => {
             <button id="lesson-btn-${lesson.level_no}" onclick="loadLevelword(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn "> <i class="fa-solid fa-book-open"></i> Leason - ${lesson.level_no}</button>
         
         `
+
         levelContainer.appendChild(btnDiv)
-    })
+
+    });
 }
 
 
-loadlessons()
+loadlessons();
