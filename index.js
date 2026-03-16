@@ -15,10 +15,10 @@ const displayLevelWord = (words)=>{
 
     if(words.length === 0){
         wordContainer.innerHTML = `
-             <div class="col-span-full flex flex-col items-center justify-center text-center space-y-3">
-            <img src="./assets/alert-error.png" class="h-[100px]" alt="">
-            <p>এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-            <h2 class="font-bold">নেক্সট Lesson এ যান</h2>
+             <div class="col-span-full flex flex-col items-center justify-center text-center space-y-3" >
+            <img src="./assets/alert-error.png" h-[100px] alt="">
+            <p class="font-bangla text-xs text-gray-400" >এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+            <h2 class="font-bangla text-4xl" >নেক্সট Lesson এ যান</h2>
         </div>
         `
         return;
