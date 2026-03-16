@@ -29,14 +29,13 @@ const displayLevelWord = (words)=>{
             <div class="bg-white rounded-xl shadow-sm text-center py-20 px-5 space-y-4">
             <h2 class='font-bold text-2xl'>${word.word ? word.word : 'শব্দটি খুঁজে পাওয়া যায়নি'}</h2>
             <p class="text-xl" >Meaning/Pronunciation</p>
-            <div class="text-xl font-bangla" >${word.meaning ? word.meaning : 'শব্দটি খুঁজে পাওয়া যায়নি'} / ${word.pronunciation ? word.pronunciation : 'শব্দটি খুঁজে পাওয়া যায়নি'}</div>
+            <div class="text-xl font-bangla" >${word.meaning ? word.meaning : 'অর্থ খুঁজে পাওয়া যায়নি'} / ${word.pronunciation ? word.pronunciation : 'উচ্চারণ খুঁজে পাওয়া যায়নি'}</div>
 
             <div class="flex justify-between items-center pt-10 px-20">
             <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
             <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
             </div>
-            
         `
         wordContainer.appendChild(card)
     })
